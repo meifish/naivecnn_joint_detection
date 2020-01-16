@@ -19,3 +19,10 @@ sudo apt-get install python-opencv
 sudo pip install --upgrade keras
 ```
 
+### Installing
+
+Install the module
+```shell
+git clone https://github.com/meifish/naivecnn-joint-detection
+python setup.py install
+```
