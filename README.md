@@ -26,3 +26,12 @@ Install the module
 git clone https://github.com/meifish/naivecnn-joint-detection
 python setup.py install
 ```
+
+### Dataset
+#### LSP (Leeds Sports Pose Dataset)
+
+The dataset for training comes with this project. Images are in `dataset\lsp_dataset_original` folder. <br>
+One can find more dataset information on LSP website: https://sam.johnson.io/research/lsp.html
+
+
+### Use Python Module
