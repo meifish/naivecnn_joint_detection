@@ -7,6 +7,9 @@ setup(
     url="https://github.com/meifish/naivecnn-joint-detection",
     packages = find_packages(),
     install_requires = [
-        'numpy'
+        'numpy',
+        'mat4py',
+        'scipy',
+        'matplotlib'
     ]
 )
