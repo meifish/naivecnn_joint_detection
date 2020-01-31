@@ -4,7 +4,7 @@ Implementation of Human Joints Detection, using Keras to perform naive CNN model
 ## Models
 | model_name       | Encoder           | Prediction Model   | Prediction Form    |
 |------------------|-------------------|--------------------|--------------------|
-| vgg_heatmap      | VGG 16            | Softmax 2D         | Heatmap            |
+| vgg_      | VGG 16            | Softmax 2D         | Heatmap            |
 
 
 ## Getting Started
