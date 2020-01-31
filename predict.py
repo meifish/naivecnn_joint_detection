@@ -4,17 +4,18 @@ import mat4py
 import numpy as np
 import scipy
 import matplotlib.pyplot as plt
-from .models.vgg16_jtNet import jtNet
+#from .models.jtNet import vgg16jtNet
 from .train import find_latest_checkpoint
 from .data_utils.data_loader import lsp_load_data
 
+"""
 def model_from_checkpoint_path( checkpoints_path ):
 
     latest_weights = find_latest_checkpoint( checkpoints_path )
     assert ( not latest_weights is None ) , "Checkpoint not found."
 
     #TODO: Change this to read from configuration
-    model = jtNet(nclasses=14, input_height=224, input_width=224)
+    model = vgg16jtNet(nclasses=14, input_height=224, input_width=224)
 
     print("loaded weights " , latest_weights )
     model.load_weights(latest_weights)
@@ -24,18 +25,20 @@ def model_from_checkpoint_path( checkpoints_path ):
 def model_from_weight( weight_path ):
 
     #TODO: Change this to read from configuration
-    model = jtNet(nclasses=14, input_height=224, input_width=224)
+    model = vgg16jtNet(nclasses=14, input_height=224, input_width=224)
     model.load_weights(weight_path)
     return model
+"""
 
+def predict_multiple(model, images_path, image_fnames, jts_map_path, checkpoints_path=None, load_weight_path=None):
 
-def predict_multiple(images_path, image_fnames, jts_map_path, model=None, checkpoints_path=None, load_weight_path=None):
-
+    """
     if model is None and ( not checkpoints_path is None ):
         model = model_from_checkpoint_path(checkpoints_path)
 
     if model is None and ( not load_weight_path is None):
         model = model_from_weight(load_weight_path)
+    """
 
     # Prepare Joint map
     mat = scipy.io.loadmat(jts_map_path)

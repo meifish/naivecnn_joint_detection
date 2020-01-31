@@ -1,6 +1,7 @@
 import os
 import json
 from .data_utils.data_loader import lsp_load_data
+from .data_utils.data_loader import load_jt_map
 from .loss import l2_loss
 from .evaluation import accu_rate
 
@@ -19,7 +20,7 @@ def find_latest_checkpoint(checkpoints_path):
 def train(model,
           train_images_path,
           train_fnames_txt_path,
-          jts_map,
+          jt_map_path,
           resize_height=None,  # user-specified. It will affects the cropping.
           resize_width=None,  # user-specified. It will affects the cropping.
           n_classes=None,  # pre-defined by JtNet
@@ -61,6 +62,8 @@ def train(model,
         if not latest_checkpoint is None:
             print("Loading the weights from latest checkpoint ", latest_checkpoint)
             model.load_weights(latest_checkpoint)
+
+    jts_map = load_jt_map(jt_map_path)
 
     train_gen = lsp_load_data(train_images_path,
                               train_fnames_txt_path,

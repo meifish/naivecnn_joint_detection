@@ -3,10 +3,12 @@ import sys
 import os
 import numpy as np
 import cv2
+import mat4py
 import glob
 import itertools
 import random
 import pickle
+import scipy.io
 from scipy.stats import multivariate_normal
 from tqdm import tqdm
 from .augmentation import augment_seg
@@ -419,3 +421,16 @@ def lsp_load_data( images_path,
             
         else:
             yield np.array(X) , np.array(Y), np.array(I), np.array(J)
+
+
+def load_jt_map(jt_map_path):
+    mat = scipy.io.loadmat(jt_map_path)
+    jts_map = mat.copy()
+    jts_map = jts_map['joints']
+    jts_map = np.rollaxis(jts_map, 2)
+
+    # Remove the visibility channel # note: lsp original data use this one
+    jts_map = np.delete(jts_map, np.s_[-1::], 1)
+    assert (jts_map.shape[1] == 2 and jts_map.shape[2] == 14), "Check again the shape of joint map. Should be (nExamples, 2, nJoints)"
+
+    return jts_map
